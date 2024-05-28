@@ -17,6 +17,7 @@ services:
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
       MAPTOOL_USER: ${MAPTOOL_USER}
       MAPTOOL_PASS: ${MAPTOOL_PASS}
+      HISTORY_PATH: ${HISTORY_PATH}
     restart: unless-stopped
     build: .
 
