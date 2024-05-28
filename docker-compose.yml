@@ -10,10 +10,13 @@ services:
       - ./config.yml:/screeps/config.yml
       - screeps-data:/data
       - screeps-mods:/screeps/mods
+      - ./dynamicMarketConfig.js:/screeps/dynamicMarketConfig.js
     environment:
       MONGO_HOST: mongo
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
+      MAPTOOL_USER: ${MAPTOOL_USER}
+      MAPTOOL_PASS: ${MAPTOOL_PASS}
     restart: unless-stopped
     build: .
 
