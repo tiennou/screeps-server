@@ -10,6 +10,7 @@ services:
       - ./config.yml:/screeps/config.yml
       - screeps-data:/data
       - screeps-mods:/screeps/mods
+      - ./bots.yml:/screeps/bots.yml
     environment:
       MONGO_HOST: mongo
       REDIS_HOST: redis
