@@ -7,9 +7,10 @@ mods:
   - git+https://github.com/ScreepsMods/screepsmod-map-tool
   # - glitchassassin/screepsmod-konami#patch-1
   - screepsmod-dynamicmarket
+  - screepsmod-bots
 bots:
-  # simplebot: screepsbot-zeswarm
-  # overmind: screeps-bot-overmind
+  simplebot: screepsbot-zeswarm
+  overmind: screeps-bot-overmind
   # tooangel: git+https://github.com/TooAngel/screeps
   # commiebot: 'the-international-screeps-bot'
 
