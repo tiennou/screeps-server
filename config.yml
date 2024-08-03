@@ -8,6 +8,7 @@ mods:
   # - glitchassassin/screepsmod-konami#patch-1
   - screepsmod-dynamicmarket
   - screepsmod-bots
+  - screepsmod-history
 bots:
   simplebot: screepsbot-zeswarm
   overmind: screeps-bot-overmind
