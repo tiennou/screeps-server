@@ -12,6 +12,7 @@ services:
       - screeps-mods:/screeps/mods
       - ./crashdumps:/dumps
       - ./dynamicMarketConfig.js:/screeps/dynamicMarketConfig.js
+      - ./bots.yml:/screeps/bots.yml
       - ../mods/:/mods
     environment:
       NODE_OPTIONS: --max-old-space-size=4096 --trace-warnings

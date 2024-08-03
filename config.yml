@@ -10,8 +10,8 @@ mods:
   - /mods/screepsmod-punxsutawney
   # - glitchassassin/screepsmod-konami#patch-1
 bots:
-  # simplebot: screepsbot-zeswarm
-  # overmind: screeps-bot-overmind
+  simplebot: screepsbot-zeswarm
+  overmind: screeps-bot-overmind
   # tooangel: git+https://github.com/TooAngel/screeps
   # commiebot: 'the-international-screeps-bot'
 
