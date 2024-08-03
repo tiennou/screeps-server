@@ -1,4 +1,3 @@
-version: "3"
 services:
   screeps:
     image: ghcr.io/jomik/screeps-server:edge
@@ -13,12 +12,15 @@ services:
       - ./config.yml:/screeps/config.yml
       - screeps-data:/data
       - screeps-mods:/screeps/mods
+      - ./dynamicMarketConfig.js:/screeps/dynamicMarketConfig.js
     environment:
       MONGO_HOST: mongo
       REDIS_HOST: redis
       VIRTUAL_HOST: ${SERVER_HOSTNAME}
       LETSENCRYPT_HOST: ${SERVER_HOSTNAME}
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
+      MAPTOOL_USER: ${MAPTOOL_USER}
+      MAPTOOL_PASS: ${MAPTOOL_PASS}
     restart: unless-stopped
     build: .
 
