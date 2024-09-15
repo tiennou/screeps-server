@@ -4,6 +4,7 @@ mods:
   - screepsmod-mongo
   - git+https://github.com/ScreepsMods/screepsmod-map-tool
   - screepsmod-history
+  - screepsmod-dynamicmarket
 bots:
   
 launcherOptions:

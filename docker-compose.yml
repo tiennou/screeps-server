@@ -11,6 +11,7 @@ services:
       - screeps-user:/home/node
       - screeps-data:/data
       - screeps-mods:/screeps/mods
+      - ./dynamicMarketConfig.js:/screeps/dynamicMarketConfig.js
     environment:
       NODE_OPTIONS: --max-old-space-size=4096
       MONGO_HOST: mongo
