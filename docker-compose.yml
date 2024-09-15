@@ -15,6 +15,7 @@ services:
       MONGO_HOST: mongo
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
+      HISTORY_PATH: /data/history
       MAPTOOL_USER: ${MAPTOOL_USER}
       MAPTOOL_PASS: ${MAPTOOL_PASS}
     restart: unless-stopped
