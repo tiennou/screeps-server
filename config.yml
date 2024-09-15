@@ -4,6 +4,7 @@ mods:
   - screepsmod-mongo
   - git+https://github.com/tiennou/screepsmod-map-tool#fixes
   - screepsmod-history
+  - screepsmod-dynamicmarket
 bots:
   simplebot: screepsbot-zeswarm
 
