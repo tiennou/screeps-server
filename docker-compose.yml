@@ -14,6 +14,7 @@ services:
       MONGO_HOST: mongo
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
+      HISTORY_PATH: /data/history
     restart: unless-stopped
     build: server
 
