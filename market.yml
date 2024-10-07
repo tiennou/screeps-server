@@ -1,0 +1,23 @@
+# modes are for potential future use
+# priceMode can be 'fixed' for fixed values or 'random' for random prices and volumes with the given values as average
+priceMode: 'fixed'
+sellMode: 'always'
+buyMode: 'always'
+sellPrices:
+  H: 3000
+  O: 3000
+  Z: 6000
+  K: 6000
+  U: 6000
+  L: 6000
+  X: 18000
+buyPrices:
+  H: 10
+  O: 10
+  Z: 10
+  K: 10
+  U: 10
+  L: 10
+  X: 10
+sellAmount: 1000000
+buyAmount: 1000000
