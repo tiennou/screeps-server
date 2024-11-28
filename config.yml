@@ -4,6 +4,7 @@ mods:
   - screepsmod-mongo
   - screepsmod-bots
   - screepsmod-history
+  - screepsmod-dynamicmarket
 bots:
   simplebot: screepsbot-zeswarm
   overmind: screeps-bot-overmind
