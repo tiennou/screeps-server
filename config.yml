@@ -3,6 +3,7 @@ mods:
   - screepsmod-admin-utils
   - screepsmod-mongo
   - screepsmod-bots
+  - screepsmod-history
 bots:
   simplebot: screepsbot-zeswarm
   overmind: screeps-bot-overmind
