@@ -3,14 +3,15 @@ mods:
   - screepsmod-admin-utils
   # - tiennou/screepsmod-admin-utils#fix/log-config
   - screepsmod-mongo
-  - screepsmod-bots
-  - screepsmod-history
-  - screepsmod-dynamicmarket
-  - git+https://github.com/ScreepsMods/screepsmod-map-tool
+  # - screepsmod-bots
+  # - screepsmod-history
+  # - screepsmod-dynamicmarket
+  # - git+https://github.com/ScreepsMods/screepsmod-map-tool
   # - glitchassassin/screepsmod-konami#patch-1
+  # - /screepsmod-portals
 bots:
-  simplebot: screepsbot-zeswarm
-  overmind: screeps-bot-overmind
+  # simplebot: screepsbot-zeswarm
+  # overmind: screeps-bot-overmind
   # tooangel: git+https://github.com/TooAngel/screeps
   # commiebot: 'the-international-screeps-bot'
 

@@ -12,6 +12,7 @@ services:
       - screeps-mods:/screeps/mods
       - ./bots.yml:/screeps/bots.yml
       - ./dynamicMarketConfig.js:/screeps/dynamicMarketConfig.js
+      - ../mods/screepsmod-portals:/screepsmod-portals
     environment:
       MONGO_HOST: mongo
       REDIS_HOST: redis
