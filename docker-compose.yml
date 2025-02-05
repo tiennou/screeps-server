@@ -19,6 +19,7 @@ services:
       HISTORY_PATH: /data/history
       MAPTOOL_USER: ${MAPTOOL_USER}
       MAPTOOL_PASS: ${MAPTOOL_PASS}
+      MAIN_LOOP_PAUSED: "1" # start server paused
     restart: unless-stopped
     build: server
 
