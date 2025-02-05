@@ -5,6 +5,7 @@ mods:
   - screepsmod-bots
   - screepsmod-history
   - screepsmod-dynamicmarket
+  - git+https://github.com/ScreepsMods/screepsmod-map-tool
 bots:
   simplebot: screepsbot-zeswarm
   overmind: screeps-bot-overmind
