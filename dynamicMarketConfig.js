@@ -17,7 +17,7 @@ const customConfig = {
      * NOTES
      * To remove resources set the prices as 0
      */
-    marketType: 'dynamic',
+    marketType: 'fixed',
 
     /** Commodity buy prices markup */
     commodityMarkup: 1.25,
@@ -50,9 +50,13 @@ const customConfig = {
     /** The period in which trading is considered for price changes */
     tradingPeriod: 1000,
     /** ~This amount (some randomness here) triggers market oversaturation, this also automatically scales with terminal count */
-    saturationPoint: 2000
+    saturationPoint: 2000,
+
+    sellPrices: {},
+    buyPrices: {},
 }
 
+/** @type {Record<string, { [resourceType: string]: number }>} */
 const commodities = {
     "utrium_bar": { "U": 5, "energy": 2 },
     "lemergium_bar": { "L": 5, "energy": 2 },
@@ -91,7 +95,14 @@ const commodities = {
     "essence": { "emanation": 1, "spirit": 3, "crystal": 110, "ghodium_melt": 150, "energy": 64 }
 }
 
+/**
+ * 
+ * @param {Record<string, number>} basePrices
+ * @param {number} marketPriceRatio 
+ * @returns 
+ */
 function setSellPrices(basePrices, marketPriceRatio) {
+    /** @type {Record<string, number>} */
     let sellPrices = {};
     for (let res in baseMinerals) {
         if (!basePrices[res]) { continue; }
@@ -100,7 +111,13 @@ function setSellPrices(basePrices, marketPriceRatio) {
     return sellPrices;
 }
 
+/**
+ * 
+ * @param {Record<string, number>} basePrices 
+ * @returns 
+ */
 function setBuyPrices(basePrices) {
+    /** @type {Record<string, number>} */
     let buyPrices = {};
     for (let res in basePrices) {
         if (!basePrices[res]) { continue; }
@@ -118,7 +135,7 @@ function setBuyPrices(basePrices) {
 /**
  * @param {string} commodity
  * @param {Record<string, number>} basePrices
- * @param {readonly Record<string, number>} buyPrices
+ * @param {Record<string, number>} buyPrices
  */
 function getCommoditiesPrice(commodity, basePrices, buyPrices) {
     // If we already have it return it otherwise loop thru ingredients
