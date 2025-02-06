@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/bin/env node --expose-gc
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
