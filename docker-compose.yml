@@ -23,6 +23,15 @@ services:
       MAPTOOL_PASS: ${MAPTOOL_PASS}
     restart: unless-stopped
     build: server
+    networks:
+      - traefik-net
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.screepsThunderdrone.rule=Host(`server.pandascreeps.com`)"
+      - "traefik.http.routers.screepsThunderdrone.entrypoints=websecure"
+      - "traefik.http.routers.screepsThunderdrone.tls.certresolver=letsencrypt"
+      - "traefik.http.services.screepsThunderdrone.loadbalancer.server.port=21025"
 
   mongo:
     image: mongo:4.4.30
@@ -43,3 +52,7 @@ volumes:
   screeps-user:
   redis-data:
   mongo-data:
+
+networks:
+  traefik-net:
+    external: true
