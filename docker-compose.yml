@@ -12,6 +12,7 @@ services:
       - screeps-data:/data
       - screeps-mods:/screeps/mods
     environment:
+      NODE_OPTIONS: --max-old-space-size=4096
       MONGO_HOST: mongo
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
