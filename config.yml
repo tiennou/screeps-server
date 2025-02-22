@@ -6,36 +6,23 @@ mods:
   - screepsmod-history
   - screepsmod-dynamicmarket
 bots:
-  
+
 launcherOptions:
-  # If set, automatically ensures all mods are updated
   autoUpdate: false
-  # If set, forward console messages to terminal
   logConsole: true
-  # The number of parallel runner threads in which player scripts are executed.
-  # Don't set this option greater than the number of your physical CPU cores.
-  # runnerCount: 6
-  # The number of room processor worker processes to launch.
-  # Don't set this option greater than the number of your physical CPU cores.
-  # processorCount: 4
+  runnerCount: 10
+  processorCount: 10
 
 serverConfig:
-  map: random_8x8 # utils.importMap will be called automatically with this value, see utils.importMap above
+  map: random_2x2
   tickRate: 1000
   socketUpdateRate: 1000
-  # whitelist: # Does not restrict login, only restricts spawning
-  #   - traxus
-  #   - zeswarm
-  #   - commiebot
-  #   - jackbot
-  #   - nolanbot
-  #   - hunterbot
+  whitelist:
 
   shardName: thunderdrone
   welcomeText: |
     <h1>Welcome to the <i>Thunderdrone</i></h1>
     <div>Powered by screepsmod-admin-utils</div>
-  # statsToken: ...splusToken... # This enables submitting stats to S+ Grafana. Note: shardName MUST be set
   gclToCPU: true
   maxCPU: 100
   baseCPU: 20
