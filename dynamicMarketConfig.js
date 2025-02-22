@@ -17,7 +17,7 @@ const customConfig = {
      * NOTES
      * To remove resources set the prices as 0
      */
-    marketType: 'dynamic',
+    marketType: 'fixed',
 
     /** Commodity buy prices markup */
     commodityMarkup: 1.25,
