@@ -13,7 +13,7 @@ services:
       - screeps-mods:/screeps/mods
       - ./dynamicMarketConfig.js:/screeps/dynamicMarketConfig.js
     environment:
-      NODE_OPTIONS: --max-old-space-size=4096
+      NODE_OPTIONS: --max-old-space-size=4096 --trace-warnings
       MONGO_HOST: mongo
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
