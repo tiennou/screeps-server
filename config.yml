@@ -2,6 +2,7 @@ mods:
   - screepsmod-auth
   - screepsmod-admin-utils
   - screepsmod-mongo
+  - screepsmod-portals
 bots:
   simplebot: screepsbot-zeswarm
 
