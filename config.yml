@@ -3,6 +3,7 @@ mods:
   - screepsmod-admin-utils
   - screepsmod-mongo
   - screepsmod-history
+  - git+https://github.com/tiennou/screepsmod-map-tool#fixes
 bots:
   simplebot: screepsbot-zeswarm
 
