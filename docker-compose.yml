@@ -10,6 +10,7 @@ services:
       - ./config.yml:/screeps/config.yml
       - screeps-data:/data
       - screeps-mods:/screeps/mods
+      - ../mods/screepsmod-portals:/screepsmod-portals
     environment:
       NODE_OPTIONS: --max-old-space-size=4096
       MONGO_HOST: mongo

@@ -4,6 +4,7 @@ mods:
   - screepsmod-mongo
   - screepsmod-history
   - git+https://github.com/tiennou/screepsmod-map-tool#fixes
+  - /screepsmod-portals
 bots:
   simplebot: screepsbot-zeswarm
 
