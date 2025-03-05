@@ -10,7 +10,7 @@ launcherOptions:
   # If set, automatically ensures all mods are updated
   autoUpdate: false
   # If set, forward console messages to terminal
-  logConsole: false
+  logConsole: true
 serverConfig:
   map: random_4x4 # utils.importMap will be called automatically with this value, see utils.importMap above
   tickRate: 1500
