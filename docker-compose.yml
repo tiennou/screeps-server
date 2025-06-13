@@ -16,6 +16,7 @@ services:
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
       HISTORY_PATH: /data/history
+      HISTORY_KEEP_TICKS: 4000000
       MAPTOOL_USER: ${MAPTOOL_USER}
       MAPTOOL_PASS: ${MAPTOOL_PASS}
     restart: unless-stopped
