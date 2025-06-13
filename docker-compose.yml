@@ -1,3 +1,4 @@
+# Thunderdrone 2
 services:
   screeps:
     image: ghcr.io/jomik/screeps-server:edge
@@ -5,7 +6,7 @@ services:
       - mongo
       - redis
     ports:
-      - 21025:21025/tcp
+      - 22025:21025/tcp
     volumes:
       - ./config.yml:/screeps/config.yml
       - screeps-user:/home/node
@@ -28,7 +29,7 @@ services:
       - default
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.screepsThunderdrone.rule=Host(`server.pandascreeps.com`)"
+      - "traefik.http.routers.screepsThunderdrone.rule=Host(`td2.pandascreeps.com`)"
       - "traefik.http.routers.screepsThunderdrone.entrypoints=websecure"
       - "traefik.http.routers.screepsThunderdrone.tls.certresolver=letsencrypt"
       - "traefik.http.services.screepsThunderdrone.loadbalancer.server.port=21025"

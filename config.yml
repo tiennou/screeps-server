@@ -22,6 +22,7 @@ serverConfig:
   shardName: thunderdrone
   welcomeText: |
     <h1>Welcome to the <i>Thunderdrone</i></h1>
+    <p>Session 2 of the Thunderdrone community event</p>
     <div>Powered by screepsmod-admin-utils</div>
   gclToCPU: true
   maxCPU: 100
