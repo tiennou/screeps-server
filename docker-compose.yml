@@ -17,6 +17,7 @@ services:
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
       HISTORY_PATH: /data/history
+      HISTORY_KEEP_TICKS: 4000000
     restart: unless-stopped
     build: server
 
