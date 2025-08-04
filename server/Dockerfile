@@ -28,7 +28,7 @@ RUN sed -i "s/\r//" .screepsrc
 FROM node:${NODE_VERSION}-alpine AS server
 # hadolint ignore=DL3018
 RUN --mount=type=cache,target=/var/cache/apk \
-  apk add --no-cache git
+  apk add --no-cache git libexecinfo-dev libexecinfo
 
 USER node
 COPY --from=screeps --chown=node:node /screeps /screeps/
