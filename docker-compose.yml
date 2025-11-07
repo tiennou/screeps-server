@@ -11,10 +11,17 @@ services:
       - screeps-user:/home/node
       - screeps-data:/data
       - screeps-mods:/screeps/mods
+      - ./crashdumps:/dumps
     environment:
       MONGO_HOST: mongo
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
+    ulimits:
+      core: -1
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
     restart: unless-stopped
     build: server
 

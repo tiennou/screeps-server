@@ -6,13 +6,16 @@ FROM node:${NODE_VERSION}-alpine AS screeps
 # They are so old that there is no changes to their package registry anyway..
 # hadolint ignore=DL3018
 RUN --mount=type=cache,target=/etc/apk/cache \
-  apk add --no-cache bash python2 make gcc g++
+  apk add --no-cache bash python2 make gcc g++ git libexecinfo-dev libexecinfo
 
 # Install screeps
 WORKDIR /screeps
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm \
   npm clean-install
+
+RUN --mount=type=cache,target=/root/.npm \
+  npm install https://github.com/ddopson/node-segfault-handler
 
 # Initialize screeps, similar to `screeps init`
 RUN cp -a /screeps/node_modules/@screeps/launcher/init_dist/.screepsrc ./ && \
@@ -25,7 +28,7 @@ RUN sed -i "s/\r//" .screepsrc
 FROM node:${NODE_VERSION}-alpine AS server
 # hadolint ignore=DL3018
 RUN --mount=type=cache,target=/var/cache/apk \
-  apk add --no-cache git
+  apk add --no-cache git libexecinfo-dev libexecinfo
 
 USER node
 COPY --from=screeps --chown=node:node /screeps /screeps/
