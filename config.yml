@@ -6,11 +6,38 @@ mods:
   - screepsmod-history
   - git+https://github.com/ScreepsMods/screepsmod-map-tool
   - screepsmod-portals
-bots:
-  simplebot: screepsbot-zeswarm
 
 launcherOptions:
   # If set, automatically ensures all mods are updated
   autoUpdate: false
   # If set, forward console messages to terminal
-  logConsole: false
+  logConsole: true
+serverConfig:
+  map: random_4x4 # utils.importMap will be called automatically with this value, see utils.importMap above
+  tickRate: 1000
+  socketUpdateRate: 200
+  shardName: 'jaysee'
+  constants:
+    POWER_CREEP_SPAWN_COOLDOWN: 3600000 # 1 Hour
+    POWER_CREEP_DELETE_COOLDOWN: 3600000
+  welcomeText: |
+    <h1>Welcome to Jaysee's Server!</h1>
+    <p style="font-weight: 500;">This server offers an environment to test code and have fun.</p>
+    <h3>Rules</h3>
+    <ul>
+      <li>Unmodified open source bots are not allowed.</li>
+      <li>Use of leaked bots is not allowed.</li>
+    </ul>
+    <h3>Your code</h3>
+    <p><strong>Please backup your code!</strong> Git is the recommended tool for this. The server may restart without warning, which may cause the deletion of your local files.</p>
+    <br>
+    <p>Please also consider using an external IDE over the integrated Screeps editor, as an external one offers better code safety and an improved development experience.</p>
+    <h3>Trust</h3>
+    <p>Please note that by uploading your code to this server, it becomes readable to moderators and admins. To protect your code from being stolen and used, you may want to use a minifcation or uglication tool. Search "minifyjs" to find the right tool for you.</p>
+  gclToCPU: true
+  maxCPU: 100
+  baseCPU: 25
+  stepCPU: 10
+
+  portals:
+    maxPairs: 90
