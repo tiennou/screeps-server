@@ -17,6 +17,15 @@ RUN --mount=type=cache,target=/root/.npm \
 RUN --mount=type=cache,target=/root/.npm \
   npm install https://github.com/ddopson/node-segfault-handler
 
+RUN mkdir deps
+RUN cd deps && git clone https://github.com/tiennou/engine
+RUN cd deps/engine && git switch fix/streamline-isActive
+RUN cd deps/engine && npm clean-install
+RUN cd deps/engine && npm run prepublish
+
+RUN --mount=type=cache,target=/root/.npm \
+  npm install ./deps/engine
+
 # Initialize screeps, similar to `screeps init`
 RUN cp -a /screeps/node_modules/@screeps/launcher/init_dist/.screepsrc ./ && \
   cp -a /screeps/node_modules/@screeps/launcher/init_dist/db.json ./ && \
