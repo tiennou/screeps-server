@@ -1,4 +1,3 @@
-
 interface LauncherOptions {
     autoUpdate?: boolean;
     logConsole?: boolean;
@@ -16,4 +15,9 @@ interface Config {
     launcherOptions?: LauncherOptions;
 }
 
+type CompletionResult = (line: string) => import("readline").CompleterResult | null;
+type CompletionNode = '' | CompletionResult | CompletionTree;
+interface CompletionTree {
+    [key: string]: CompletionNode
+}
 type ResolvedConfig = Required<Config>;
