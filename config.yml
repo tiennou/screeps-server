@@ -21,13 +21,13 @@ launcherOptions:
   logConsole: true
   # The number of parallel runner threads in which player scripts are executed.
   # Don't set this option greater than the number of your physical CPU cores.
-  runnerThreads: 6
+  runnerThreads: 1
   # The number of room processor worker processes to launch.
   # Don't set this option greater than the number of your physical CPU cores.
-  processorCount: 4
+  processorCount: 1
 
 serverConfig:
-  map: random_8x8 # utils.importMap will be called automatically with this value, see utils.importMap above
+  map: random_1x1 # utils.importMap will be called automatically with this value, see utils.importMap above
   tickRate: 1000
   socketUpdateRate: 1000
   whitelist: # Does not restrict login, only restricts spawning
