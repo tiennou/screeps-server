@@ -14,9 +14,12 @@ services:
       - ./crashdumps:/dumps
       - ./dynamicMarketConfig.js:/screeps/dynamicMarketConfig.js
     environment:
+      NODE_OPTIONS: --max-old-space-size=4096
       MONGO_HOST: mongo
       REDIS_HOST: redis
       STEAM_KEY: ${STEAM_KEY:?"Missing steam key"}
+      HISTORY_PATH: /data/history
+      HISTORY_KEEP_TICKS: 4000000
     ulimits:
       core: -1
     cap_add:
