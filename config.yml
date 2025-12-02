@@ -10,3 +10,6 @@ launcherOptions:
   autoUpdate: false
   # If set, forward console messages to terminal
   logConsole: false
+  custom:
+    engine: https://github.com/tiennou/engine#fix/streamline-isActive
+    driver: https://github.com/tiennou/driver#fix/getUsed-torn-read

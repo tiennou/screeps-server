@@ -6,7 +6,7 @@ FROM node:${NODE_VERSION}-alpine AS screeps
 # They are so old that there is no changes to their package registry anyway..
 # hadolint ignore=DL3018
 RUN --mount=type=cache,target=/etc/apk/cache \
-  apk add --no-cache bash python2 make gcc g++
+  apk add --no-cache bash python2 make gcc g++ git
 
 # Install screeps
 WORKDIR /screeps
@@ -21,6 +21,11 @@ RUN cp -a /screeps/node_modules/@screeps/launcher/init_dist/.screepsrc ./ && \
 
 # Gotta remove this Windows carriage return shenanigans
 RUN sed -i "s/\r//" .screepsrc
+
+COPY config.yml ./config.yml
+COPY --chown=node:node screeps-install.cjs ./bin/install
+RUN SERVER_DIR=/screeps ./bin/install
+RUN rm ./config.yml
 
 FROM node:${NODE_VERSION}-alpine AS server
 # hadolint ignore=DL3018
