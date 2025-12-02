@@ -13,7 +13,7 @@ services:
       - screeps-mods:/screeps/mods
       - ./crashdumps:/dumps
       - ./dynamicMarketConfig.js:/screeps/dynamicMarketConfig.js
-      - ../mods/screepsmod-portals:/screepsmod-portals
+      - ../mods/:/mods
     environment:
       NODE_OPTIONS: --max-old-space-size=4096 --trace-warnings
       MONGO_HOST: mongo
