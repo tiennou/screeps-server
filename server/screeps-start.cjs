@@ -303,6 +303,6 @@ const start = async () => {
 };
 
 start().catch((err) => {
-  console.error(err.message);
+  console.error(err.message, err.stack);
   process.exit();
 });
