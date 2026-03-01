@@ -1,12 +1,48 @@
+# Config to replicate Season 8:
+# - Market mods are not included since market and terminal trading are disabled
+# - 100 CPU (constant)
+
 mods:
-  - screepsmod-auth
-  - screepsmod-admin-utils
-  - screepsmod-mongo
-bots:
-  simplebot: screepsbot-zeswarm
+# https://github.com/ScreepsMods/screepsmod-auth
+- screepsmod-auth
+# https://github.com/ScreepsMods/screepsmod-admin-utils
+- screepsmod-admin-utils
+# https://github.com/ScreepsMods/screepsmod-map-tool
+- screepsmod-map-tool
+# https://github.com/ScreepsMods/screepsmod-mongo
+- screepsmod-mongo
+# # https://github.com/ScreepsMods/screepsmod-history
+# - screepsmod-history
+
+bots: []
 
 launcherOptions:
   # If set, automatically ensures all mods are updated
   autoUpdate: false
   # If set, forward console messages to terminal
-  logConsole: false
+  logConsole: true
+
+serverConfig:
+  welcomeText: |
+    <h1 style="text-align: center;">Dr. Dvorak's Private Test Server</h1>
+    <p>Prepare for <a href='https://screeps.com/season/#!/seasons/chronicle'>Season 8</a>: March 1, 2025 — May 1, 2026</p>
+    <h2>Links</h2>
+    <ul>
+      <li><a href='http://localhost:21025/maptool'>Map Tool</a></li>
+      <li><a href='http://localhost:21025/authmod/password/'>Set Account Password'</a></li>
+    </ul>
+  # If screepsmod-admin-utils is installed,
+  # `utils.importMap` will be called automatically with the value of `map`
+  # See https://maps.screepspl.us/ for valid identifiers
+  # (defaults to "random_1_1")
+  map: "seasonal-shardSeason8"
+  shardName: "shardSeason"
+  tickRate: 500 # ms
+  socketUpdateRate: 500 # ms
+  constants:
+    POWER_CREEP_SPAWN_COOLDOWN: 60000 # ms; 1 minute; default: 8 hours
+    POWER_CREEP_DELETE_COOLDOWN: 60000 # ms; 1 minute; default: 24 hours
+  gclToCPU: true
+  maxCPU: 100 # default: 300
+  baseCPU: 100 # default: 20
+  stepCPU: 0 # default: 10
