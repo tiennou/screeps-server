@@ -50,7 +50,7 @@ RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update \
-    && apt-get install -y --no-install-recommends git wget \
+    && apt-get install -y --no-install-recommends git wget ssh \
     && rm -rf /var/lib/apt/lists/*
 
 USER node
