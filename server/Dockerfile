@@ -9,19 +9,25 @@ RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
  && sed -i '/stretch-updates/d' /etc/apt/sources.list
 RUN apt-get update
 
-# Install node-gyp dependencies
-# We do not pin as we use multiple node versions.
 # They are so old that there is no changes to their package registry anyway..
 # While we're at it, try fixing the root certificates
 # hadolint ignore=DL3018
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates bash python make gcc g++ \
+    && apt-get install -y --no-install-recommends ca-certificates bash \
     && rm -rf /var/lib/apt/lists/* \
     && update-ca-certificates
 
 FROM base AS screeps
+
+# Install node-gyp dependencies
+# We do not pin as we use multiple node versions.
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update \
+    && apt-get install -y --no-install-recommends python make gcc g++ \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install screeps
 WORKDIR /screeps
@@ -37,14 +43,9 @@ RUN cp -a /screeps/node_modules/@screeps/launcher/init_dist/.screepsrc ./ && \
 # Gotta remove this Windows carriage return shenanigans
 RUN sed -i "s/\r//" .screepsrc
 
-FROM node:${NODE_VERSION}-slim AS server
+FROM base AS server
 
 ENV DEBIAN_FRONTEND=noninteractive
-
-# Because Stretch is oldoldstable, it's in the archive now
-RUN sed -i 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list \
- && sed -i 's|security.debian.org|archive.debian.org|g' /etc/apt/sources.list \
- && sed -i '/stretch-updates/d' /etc/apt/sources.list
 
 # Install git for direct mod loading and wget for the healthcheck
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
