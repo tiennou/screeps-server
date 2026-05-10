@@ -13,5 +13,10 @@
   "dependencies": {
     "screeps": "4.3.0",
     "js-yaml": "4.3.0"
+  },
+  "overrides": {
+    "@screeps/engine": "https://github.com/tiennou/engine#dev",
+    "@screeps/driver": "https://github.com/tiennou/driver#dev",
+    "@screeps/backend":"https://github.com/tiennou/backend-local#dev"
   }
 }
