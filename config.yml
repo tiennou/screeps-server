@@ -35,3 +35,7 @@ serverConfig:
 
   punxsutawney:
     loopDuration: 30
+
+  cronjobMgr:
+    genStrongholds: false
+    # inactiveUserCleanup: false
