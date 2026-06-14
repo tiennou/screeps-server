@@ -3,10 +3,22 @@ mods:
   - screepsmod-admin-utils
   - screepsmod-mongo
 bots:
-  simplebot: screepsbot-zeswarm
+  # simplebot: screepsbot-zeswarm
+  # overmind: screeps-bot-overmind
+  # tooangel: git+https://github.com/TooAngel/screeps
+  # commiebot: 'the-international-screeps-bot'
 
 launcherOptions:
-  # If set, automatically ensures all mods are updated
   autoUpdate: false
-  # If set, forward console messages to terminal
-  logConsole: false
+  logConsole: true
+  runnerThreads: 1
+  processorCount: 1
+
+serverConfig:
+  shardName: traxusworld
+  map: random_1x1
+  tickRate: 1000
+  socketUpdateRate: 1000
+  welcomeText: |
+    <h1>Welcome</h1>
+    <div>Powered by screepsmod-admin-utils</div>
