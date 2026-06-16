@@ -23,3 +23,5 @@ serverConfig:
     <h1>Welcome</h1>
     <div>Powered by screepsmod-admin-utils</div>
   morgan: dev
+  auth:
+    rateLimitEnabled: false
