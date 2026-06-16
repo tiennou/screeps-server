@@ -1,5 +1,5 @@
 mods:
-  - screepsmod-auth
+  - /mods/screepsmod-auth
   - screepsmod-admin-utils
   - screepsmod-mongo
 bots:
