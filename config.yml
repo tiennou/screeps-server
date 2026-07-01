@@ -3,6 +3,7 @@ mods:
   - screepsmod-admin-utils
   - screepsmod-mongo
   - screepsmod-dynamicmarket
+  - screepsmod-history
 bots:
   simplebot: screepsbot-zeswarm
 
