@@ -20,13 +20,15 @@ mods:
 ```
 
 ### Bots
-Bots are managed by changing the `bots` object in `config.yml`. The key is the name you wish to use for the bot, the value is the package.
+Bots are managed by changing the `bots` object in `config.yml`. The key is the name you wish to use for the bot; the value is an npm package name or a local path.
 ```diff
 bots:
 -  simplebot: screepsbot-zeswarm
 +  zeswarm: screepsbot-zeswarm
-+  quorom: screepsbot-quorum
++  quorum: screepsbot-quorum
 ```
+
+You can set the value to either a folder with either a `package.json` file that defines `"main"` or a `main.js` file containing the bot's source code, or an explicit path to `main.js`; the reason is that the Screeps server is hardcoded to look for a `main.js` file.
 
 ### Server options
 We can set options specific to the server. Here is an example that forwards log messages to the terminal.

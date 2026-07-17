@@ -67,6 +67,80 @@ const parseVersionSpec = (spec) => {
   return [name, version];
 }
 
+/**
+ * @param {string} name
+ * @returns {boolean}
+ */
+const isLocalPath = (name) => fs.existsSync(path.resolve(name));
+
+/**
+ * Resolve a local bot config path to the directory the Screeps server expects
+ * (a directory containing main.js).
+ *
+ * Local bots are either:
+ * - a packaged directory with package.json "main",
+ * - an unpackaged directory that contains main.js, or
+ * - an explicit path to a main.js file (parent dir is what gets stored).
+ *
+ * @param {string} localBotPath
+ * @returns {string}
+ */
+const resolveLocalBotDir = (localBotPath) => {
+  const botPath = path.resolve(localBotPath);
+  if (!fs.existsSync(botPath)) {
+    throw new Error(`Local bot path "${localBotPath}" does not exist`);
+  }
+
+  const stat = fs.statSync(botPath);
+  /** @type {string} */
+  let botDir;
+
+  if (stat.isFile()) {
+    if (path.basename(botPath) !== "main.js") {
+      throw new Error(
+        `Local bot file "${botPath}" must be named main.js (required by the Screeps server).`,
+      );
+    }
+    botDir = path.dirname(botPath);
+  } else if (stat.isDirectory()) {
+    /** @type {any} */
+    let pkg;
+    try {
+      pkg = loadPackage(botPath);
+    } catch {
+      pkg = null;
+    }
+
+    if (pkg) {
+      const { main } = pkg;
+      if (!main) {
+        throw new Error(
+          `Local bot "${botPath}" has package.json but no "main" field; point at the main.js file explicitly.`,
+        );
+      }
+      botDir = path.dirname(path.resolve(botPath, main));
+    } else if (fs.existsSync(path.join(botPath, "main.js"))) {
+      botDir = botPath;
+    } else {
+      throw new Error(
+        `Local bot "${botPath}" is not a packaged directory and has no main.js; point at the main.js file explicitly.`,
+      );
+    }
+  } else {
+    throw new Error(
+      `Local bot path "${botPath}" is neither a file nor a directory`,
+    );
+  }
+
+  const mainJs = path.join(botDir, "main.js");
+  if (!fs.existsSync(mainJs)) {
+    throw new Error(
+      `Local bot directory "${botDir}" does not contain main.js (required by the Screeps server).`,
+    );
+  }
+  return botDir;
+};
+
 const installPackages = () => {
   console.log("Updating dependencies");
   const mods = config.mods;
@@ -75,10 +149,13 @@ const installPackages = () => {
   const modsPackage = loadPackage(ModsDir);
   const dependencies = modsPackage.dependencies || {};
 
-  // Calculate package diff
-  const packages = [...mods, ...Object.values(bots)];
+  // Only consider things that look like packages names
+  const botsPackages = Object.values(bots).filter((bot) => !isLocalPath(bot));
 
-  const newPackages = packages.filter(
+  // Calculate package diff
+  const packages = [...mods, ...botsPackages];
+
+  let newPackages = packages.filter(
     (pkg) =>
       !Object.entries(dependencies).some((dependency) =>
         isDependency(pkg, dependency),
@@ -144,8 +221,10 @@ const updatePackages = (doUpdate) => {
   const modsPackage = loadPackage(ModsDir);
   const dependencies = modsPackage.dependencies || {};
 
+  const botsPackages = Object.values(bots).filter((bot) => !isLocalPath(bot));
+
   // Calculate package diff
-  const configuredPackages = [...mods, ...Object.values(bots)];
+  const configuredPackages = [...mods, ...botsPackages];
 
   const packagedMods = configuredPackages.filter(
     (pkg) =>
@@ -223,6 +302,7 @@ const writeModsConfiguration = () => {
         `Missing 'main' key for ${name}, report this to the author of the package.`,
       );
     }
+    console.log("mainPath:", pkgDir, main);
     const mainPath = path.resolve(pkgDir, main);
 
     if (mods.some((m) => m.includes(name) || version.includes(m))) {
@@ -237,6 +317,13 @@ const writeModsConfiguration = () => {
       modsJSON.bots[bot[0]] = path.dirname(mainPath);
       continue;
     }
+  }
+
+  const localBots = Object.entries(bots).filter(([, botPath]) =>
+    isLocalPath(botPath),
+  );
+  for (const [name, loadPath] of localBots) {
+    modsJSON.bots[name] = resolveLocalBotDir(loadPath);
   }
 
   fs.writeFileSync("mods.json", JSON.stringify(modsJSON, null, 2));
