@@ -52,7 +52,7 @@ const VERSION = /^(=|^|~|<|>|<=|>=)?\d+(?:\.\d+(?:\.\d+(?:.*)?)?)?$/
 /**
  * 
  * @param {string} spec 
- * @returns 
+ * @returns {[string, string]}
  */
 const parseVersionSpec = (spec) => {
   const atIdx = spec.lastIndexOf("@");
@@ -271,7 +271,7 @@ const start = async () => {
   writeModsConfiguration();
 
   const updateOpt = process.argv.includes("--update");
-  const updateNeeded = updatePackages(updateOpt || (config.launcherOptions.autoUpdate ?? false));
+  const updateNeeded = updatePackages(updateOpt || !!config.launcherOptions.autoUpdate);
 
   if (updateOpt) {
     process.exit(updateNeeded ? 1 : 0);
