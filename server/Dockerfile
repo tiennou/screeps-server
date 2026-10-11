@@ -71,6 +71,7 @@ WORKDIR /screeps
 RUN mkdir ./mods && echo "{}" > ./mods/package.json
 
 COPY screeps-cli.cjs ./bin/cli
+COPY screeps-completer.cjs ./bin/screeps-completer.cjs
 COPY screeps-start.cjs ./bin/start
 
 ENV SERVER_DIR=/screeps NODE_ENV=production PATH="/screeps/bin:${PATH}"

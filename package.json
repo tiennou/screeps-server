@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "check": "tsc -p tsconfig.json",
+    "test": "node --test server/screeps-completer.test.cjs",
     "start": "docker compose up -d",
     "start:logs": "npm run start && npm run logs",
     "stop": "docker compose stop",
