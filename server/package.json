@@ -12,6 +12,23 @@
   },
   "dependencies": {
     "js-yaml": "4.3.2",
-    "screeps": "^4.3.3"
+    "screeps": "https://github.com/tiennou/screeps#dev"
+  },
+  "overrides": {
+    "@screeps/backend": "https://github.com/tiennou/backend-local#dev",
+    "@screeps/common": "https://github.com/tiennou/common#dev",
+    "@screeps/driver": "https://github.com/tiennou/driver#dev",
+    "@screeps/engine": "https://github.com/tiennou/engine#dev",
+    "@screeps/launcher": "https://github.com/tiennou/launcher#dev",
+    "@screeps/storage": "https://github.com/tiennou/storage#dev"
+  },
+  "allowScripts": {
+    "github:tiennou/screeps#fbd0a116ff450e77ea31e5d74c8e2304e45e176e": true,
+    "github:tiennou/driver#d1f097a21b214196e0e1a484ddf7f9fd175abd74": true,
+    "github:tiennou/engine#7a28d7d862fbd2cdeb2465f0081a64d50f3720e1": true,
+    "github:laverdet/isolated-vm#cb93efcc1881c826ee98ad34e66955c08713acb2": true,
+    "uglifyjs-webpack-plugin@0.4.6": true,
+    "es5-ext@0.10.64": true,
+    "github:tiennou/engine#6afc43a7a30d269c6969b495dfa52ee4a4f3e886": true
   }
 }
